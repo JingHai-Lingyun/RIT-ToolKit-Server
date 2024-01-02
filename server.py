@@ -184,5 +184,5 @@ def clearLog():
 
 if __name__ == '__main__':
     logger.log('服务器启动')
-    # app.run(host='172.16.6.163',port=3930)
-    app.run(port=3930)
+    app.run(host='172.16.6.163',port=3930)
+    # app.run(port=3930)

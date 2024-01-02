@@ -155,11 +155,12 @@ def addWaypoint():
 @app.route('/waypoint/rmWaypoint', methods = ['DELETE'])
 def rmWaypoint():
     # 获取参数
-    waypointName = request.form.get('waypointName')
+    waypointName = request.form.get('waypointCid')
+    logger.debug(waypointName)
     updateUserID = request.form.get('updateUserID')
     # 鉴权
     if waypointName is None:
-        abort(400, '缺少参数 waypointName')
+        abort(400, '缺少参数 waypointCid')
     if updateUserID is None or updateUserID == 'null':
         abort(403, '缺少参数 updateUserID')
     # 操作

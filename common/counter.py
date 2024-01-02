@@ -85,7 +85,7 @@ class Counter():
         cid = Cid().genCID()
         try:
             with open(self.json_file_path, 'r', encoding='utf-8') as ListFile:
-                List = loads(ListFile.read())
+                List:list = loads(ListFile.read())
             List.append({
                 'name': name,
                 'value': value,

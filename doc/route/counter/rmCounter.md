@@ -16,7 +16,7 @@
 
 | 参数名          | 参数类型   | 是否必填 | 参数描述    |
 | ------------ | ------ | ---- | ------- |
-| counterName  | string | 是    | 计数器名称   |
+| counterCid  | string | 是    | 计数器ID   |
 | updateUserID | string | 是    | 请求的用户名称 |
 
 ### 请求示例
@@ -26,7 +26,7 @@ DELETE /counter/rmCounter HTTP/1.1
 Host: http://154.7.177.68
 Content-Type: application/x-www-form-urlencoded
 
-counterName=test&updateUserID=test
+counterCid=test&updateUserID=test
 ```
 
 ### 响应示例

@@ -57,8 +57,9 @@ class Counter():
             with open(self.json_file_path, 'r', encoding='utf-8') as ListFile:
                 List = loads(ListFile.read())
         except:
-            self.logger.error('获取指定数据 | 错误：未找到文件')
-            raise FileNotFoundError(f'Missing Data File: {abspath(self.json_file_path)} is not exists.')
+            self.logger.warn(f'获取指定数据 | 错误：未找到文件 {abspath(self.json_file_path)}')
+            # raise FileNotFoundError(f'Missing Data File: {abspath(self.json_file_path)} is not exists.')
+            return None
         for counter in List:
             if counter['cid'] == int(name):
                 self.logger.log('获取指定数据 | 成功')
@@ -82,7 +83,7 @@ class Counter():
             self.logger.error(f'设置指定数据 | 失败，错误为：\n    {ex}')
     #
     def join(self, name, value, id):
-        cid = Cid().genCID()
+        cid = _Helper().genCID()
         try:
             with open(self.json_file_path, 'r', encoding='utf-8') as ListFile:
                 List:list = loads(ListFile.read())
@@ -94,7 +95,7 @@ class Counter():
             })
             with open(self.json_file_path, 'w', encoding='utf-8') as ListFile:
                 ListFile.write(dumps(List))
-            Cid().addCID()
+            _Helper().addCID()
             self.logger.log('加入指定数据 | 成功')
         except BaseException as ex:
             self.logger.error(f'加入指定数据 | 失败，错误为：\n    {ex}')
@@ -107,12 +108,12 @@ class Counter():
             updated_list = [counter for counter in List if counter['cid'] != int(name)]
             with open(self.json_file_path, 'w', encoding='utf-8') as ListFile:
                 ListFile.write(dumps(updated_list))
-            Cid().minusCID()
+            _Helper().minusCID()
             self.logger.log('删除指定数据 | 成功')
         except BaseException as ex:
             self.logger.error(f'删除指定数据 | 失败，错误为：\n    {ex}')
 
-class Cid():
+class _Helper():
     num_file_path = './data/counter/num.txt'
     def addCID(self):
         with open(self.num_file_path, 'r', encoding='utf-8') as NumFile:

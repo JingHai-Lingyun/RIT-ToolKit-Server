@@ -16,7 +16,7 @@
 
 | 参数名          | 参数类型   | 是否必填 | 参数描述    |
 | ------------ | ------ | ---- | ------- |
-| counterName  | string | 是    | 计数器名称   |
+| counterCid  | string | 是    | 计数器ID   |
 | counterValue | string | 是    | 要设置的值   |
 | updateUserID | string | 是    | 请求的用户名称 |
 
@@ -27,7 +27,7 @@ PATCH /counter/setCounter HTTP/1.1
 Host: http://154.7.177.68
 Content-Type: application/x-www-form-urlencoded
 
-counterName=test&counterValue=12&updateUserID=test
+counterCid=test&counterValue=12&updateUserID=test
 ```
 
 ### 响应示例

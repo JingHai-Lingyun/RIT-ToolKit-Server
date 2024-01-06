@@ -73,7 +73,7 @@ class Waypointer():
         return None
     #
     def join(self, name, x, y, z, dim, id):
-        wid = Wid().genWID()
+        wid = _Helper().genWID()
         try:
             with open(self.json_file_path, 'r', encoding='utf-8') as ListFile:
                 List:list = loads(ListFile.read())
@@ -88,7 +88,7 @@ class Waypointer():
             })
             with open(self.json_file_path, 'w', encoding='utf-8') as ListFile:
                 ListFile.write(dumps(List))
-            Wid().addWID()
+            _Helper().addWID()
             self.logger.log('加入指定数据 | 成功')
         except BaseException as ex:
             self.logger.error(f'加入指定数据 | 失败，错误为：\n    {ex}')
@@ -100,12 +100,12 @@ class Waypointer():
             updated_list = [counter for counter in List if counter['wid'] != int(name)]
             with open(self.json_file_path, 'w', encoding='utf-8') as ListFile:
                 ListFile.write(dumps(updated_list))
-            Wid().minusWID()
+            _Helper().minusWID()
             self.logger.log('删除指定数据 | 成功')
         except BaseException as ex:
             self.logger.error(f'删除指定数据 | 失败，错误为：\n    {ex}')
 
-class Wid():
+class _Helper():
     num_file_path = './data/waypoint/num.txt'
     def addWID(self):
         with open(self.num_file_path, 'r', encoding='utf-8') as NumFile:

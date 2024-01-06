@@ -16,7 +16,7 @@
 
 | 参数名          | 参数类型   | 是否必填 | 参数描述                              |
 | ------------ | ------ | ---- | --------------------------------- |
-| waypointName | string | 是    | 路径点名称 |
+| waypointCid | string | 是    | 路径点ID |
 | updateUserID | string | 是    | 请求的用户名称                           |
 
 ### 请求示例
@@ -26,7 +26,7 @@ DELETE /waypoint/rmWaypoint HTTP/1.1
 Host: http://154.7.177.68
 Content-Type: application/x-www-form-urlencoded
 
-waypointName=test&updateUserID=test
+waypointCid=test&updateUserID=test
 ```
 
 ### 响应示例
